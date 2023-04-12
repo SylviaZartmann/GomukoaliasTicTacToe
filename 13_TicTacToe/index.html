@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomuko</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div>
+        <img onclick="NewGame()" id="GameOver" class="game-over d-none" src="./img/GameOver.jpg" alt="" height="500px">
+
+        <div class="player">
+            <img id="player-1" class="active-player" src="./img/Moon.png" alt="" width="82px" height="82px">
+            <p> Player 01</p>
+            <img id="player-2" class="active-player" src="./img/Mars.png" alt="" width="82px" height="82px">
+            <p> Player 02</p>
+            <button onclick="NewGame()" id="restartGame"><img src="./img/newGame.png" alt="" width="50px"
+                    height="50px"></button>
+        </div>
+        <div class="table">
+            <div class="win-line d-none" id="win-line-0" style="top:60px; left:133px"></div>
+            <div class="win-line d-none" id="win-line-1" style="top:60px; left:228px"></div>
+            <div class="win-line d-none" id="win-line-2" style="top:60px; left:320px"></div>
+            <div class="win-line d-none" id="win-line-3" style="top:60px; left:415px"></div>
+
+            <div class="win-line d-none" id="win-line-4" style="top:155px; left:133px"></div>
+            <div class="win-line d-none" id="win-line-5" style="top:155px; left:228px"></div>
+            <div class="win-line d-none" id="win-line-6" style="top:155px; left:320px"></div>
+            <div class="win-line d-none" id="win-line-7" style="top:155px; left:415px"></div>
+
+            <div class="win-line d-none" id="win-line-8" style="top:250px; left:133px"></div>
+            <div class="win-line d-none" id="win-line-9" style="top:250px; left:228px"></div>
+            <div class="win-line d-none" id="win-line-10" style="top:250px; left:320px"></div>
+            <div class="win-line d-none" id="win-line-11" style="top:250px; left:415px"></div>
+
+            <div class="win-line d-none" id="win-line-12" style="top:345px; left:133px"></div>
+            <div class="win-line d-none" id="win-line-13" style="top:345px; left:228px"></div>
+            <div class="win-line d-none" id="win-line-14" style="top:345px; left:320px"></div>
+            <div class="win-line d-none" id="win-line-15" style="top:345px; left:415px"></div>
+
+            <div class="win-line d-none" id="win-line-16" style="top:440px; left:133px"></div>
+            <div class="win-line d-none" id="win-line-17" style="top:440px; left:228px"></div>
+            <div class="win-line d-none" id="win-line-18" style="top:440px; left:320px"></div>
+            <div class="win-line d-none" id="win-line-19" style="top:440px; left:415px"></div>
+
+            <div class="win-line d-none" id="win-line-20" style="top:535px; left:133px"></div>
+            <div class="win-line d-none" id="win-line-21" style="top:535px; left:228px"></div>
+            <div class="win-line d-none" id="win-line-22" style="top:535px; left:320px"></div>
+            <div class="win-line d-none" id="win-line-23" style="top:535px; left:415px"></div>
+
+            <div class="win-line d-none" id="win-line-24" style="top:630px; left:133px"></div>
+            <div class="win-line d-none" id="win-line-25" style="top:630px; left:228px"></div>
+            <div class="win-line d-none" id="win-line-26" style="top:630px; left:320px"></div>
+            <div class="win-line d-none" id="win-line-27" style="top:630px; left:415px"></div>
+
+            <div class="win-line d-none" id="win-line-28" style="top:202px; left:-9px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-29" style="top:298px; left:-9px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-30" style="top:390px; left:-9px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-31" style="top:490px; left:-9px; rotate: 90deg;"></div>
+
+            <div class="win-line d-none" id="win-line-32" style="top:202px; left:86px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-33" style="top:298px; left:86px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-34" style="top:390px; left:86px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-35" style="top:490px; left:86px; rotate: 90deg;"></div>
+
+            <div class="win-line d-none" id="win-line-36" style="top:202px; left:180px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-37" style="top:298px; left:180px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-38" style="top:390px; left:180px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-39" style="top:490px; left:180px; rotate: 90deg;"></div>
+
+            <div class="win-line d-none" id="win-line-40" style="top:202px; left:274px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-41" style="top:298px; left:274px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-42" style="top:390px; left:274px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-43" style="top:490px; left:274px; rotate: 90deg;"></div>
+
+            <div class="win-line d-none" id="win-line-44" style="top:202px; left:370px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-45" style="top:298px; left:370px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-46" style="top:390px; left:370px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-47" style="top:490px; left:370px; rotate: 90deg;"></div>
+
+            <div class="win-line d-none" id="win-line-48" style="top:202px; left:463px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-49" style="top:298px; left:463px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-50" style="top:390px; left:463px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-51" style="top:490px; left:463px; rotate: 90deg;"></div>
+
+            <div class="win-line d-none" id="win-line-52" style="top:202px; left:558px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-53" style="top:298px; left:558px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-54" style="top:390px; left:558px; rotate: 90deg;"></div>
+            <div class="win-line d-none" id="win-line-55" style="top:490px; left:558px; rotate: 90deg;"></div>
+
+            <div class="win-line d-none" id="win-line-56" style="top:202px; left:72px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-57" style="top:298px; left:72px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-58" style="top:390px; left:72px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-59" style="top:488px; left:72px; rotate: 45deg; width: 470px;"></div>
+
+            <div class="win-line d-none" id="win-line-60" style="top:202px; left:166px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-61" style="top:298px; left:166px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-62" style="top:390px; left:166px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-63" style="top:488px; left:166px; rotate: 45deg; width: 470px;"></div>
+
+            <div class="win-line d-none" id="win-line-64" style="top:202px; left:262px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-65" style="top:298px; left:262px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-66" style="top:390px; left:262px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-67" style="top:488px; left:262px; rotate: 45deg; width: 470px;"></div>
+
+            <div class="win-line d-none" id="win-line-68" style="top:202px; left:355px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-69" style="top:298px; left:355px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-70" style="top:390px; left:355px; rotate: 45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-71" style="top:488px; left:355px; rotate: 45deg; width: 470px;"></div>
+
+            <div class="win-line d-none" id="win-line-72" style="top:202px; left:355px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-73" style="top:298px; left:355px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-74" style="top:390px; left:355px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-75" style="top:488px; left:355px; rotate: -45deg; width: 470px;"></div>
+
+            <div class="win-line d-none" id="win-line-76" style="top:202px; left:262px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-77" style="top:298px; left:262px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-78" style="top:390px; left:262px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-79" style="top:488px; left:262px; rotate: -45deg; width: 470px;"></div>
+
+            <div class="win-line d-none" id="win-line-80" style="top:202px; left:166px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-81" style="top:298px; left:166px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-82" style="top:390px; left:166px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-83" style="top:488px; left:166px; rotate: -45deg; width: 470px;"></div>
+
+            <div class="win-line d-none" id="win-line-84" style="top:202px; left:72px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-85" style="top:298px; left:72px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-86" style="top:390px; left:72px; rotate: -45deg; width: 470px;"></div>
+            <div class="win-line d-none" id="win-line-87" style="top:488px; left:72px; rotate: -45deg; width: 470px;"></div>
+
+            <table>
+                <tr>
+                    <td onclick="showPick(0)" class="" id="field-0"> 
+                        <img class="planet d-none" id="mars-0" src="./img/Mars.png" alt="" width="83px" height="83px">
+                        <img class="planet d-none" id="moon-0" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(1)" class="" id="field-1"> 
+                        <img class="planet d-none" id="mars-1" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-1" src="./Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(2)" class="" id="field-2"> 
+                        <img class="planet d-none" id="mars-2" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-2" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(3)" class="" id="field-3"> 
+                        <img class="planet d-none" id="mars-3" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-3" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(4)" class="" id="field-4"> 
+                        <img class="planet d-none" id="mars-4" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-4" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(5)" class="" id="field-5"> 
+                        <img class="planet d-none" id="mars-5" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-5" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(6)" class="" id="field-6"> 
+                        <img class="planet d-none" id="mars-6" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-6" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td onclick="showPick(7)" class="" id="field-7"> 
+                        <img class="planet d-none" id="mars-7" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-7" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(8)" class="" id="field-8"> 
+                        <img class="planet d-none" id="mars-8" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-8" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(9)" class="" id="field-9"> 
+                        <img class="planet d-none" id="mars-9" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-9" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(10)" class="" id="field-10"> 
+                        <img class="planet d-none" id="mars-10" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-10" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(11)" class="" id="field-11"> 
+                        <img class="planet d-none" id="mars-11" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-11" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(12)" class="" id="field-12"> 
+                        <img class="planet d-none" id="mars-12" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-12" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(13)" class="" id="field-13"> 
+                        <img class="planet d-none" id="mars-13" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-13" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td onclick="showPick(14)" class="" id="field-14"> 
+                        <img class="planet d-none" id="mars-14" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-14" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(15)" class="" id="field-15"> 
+                        <img class="planet d-none" id="mars-15" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-15" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(16)" class="" id="field-16">
+                        <img class="planet d-none" id="mars-16" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-16" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(17)" class="" id="field-17">
+                        <img class="planet d-none" id="mars-17" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-17" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(18)" class=" " id="field-18">
+                        <img class="planet d-none" id="mars-18" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-18" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(19)" class="" id="field-19">
+                        <img class="planet d-none" id="mars-19" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-19" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(20)" class="" id="field-20">
+                        <img class="planet d-none" id="mars-20" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-20" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td onclick="showPick(21)" class="" id="field-21">
+                        <img class="planet d-none" id="mars-21" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-21" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(22)" class=" " id="field-22">
+                        <img class="planet d-none" id="mars-22" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-22" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(23)" class="" id="field-23">
+                        <img class="planet d-none" id="mars-23" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-23" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(24)" class="" id="field-24">
+                        <img class="planet d-none" id="mars-24" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-24" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(25)" class="" id="field-25">
+                        <img class="planet d-none" id="mars-25" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-25" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(26)" class="" id="field-26">
+                        <img class="planet d-none" id="mars-26" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-26" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(27)" class="" id="field-27">
+                        <img class="planet d-none" id="mars-27" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-27" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td onclick="showPick(28)" class="" id="field-28">
+                        <img class="planet d-none" id="mars-28" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-28" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(29)" class="" id="field-29">
+                        <img class="planet d-none" id="mars-29" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-29" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(30)" class="" id="field-30">
+                        <img class="planet d-none" id="mars-30" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-30" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(31)" class="" id="field-31">
+                        <img class="planet d-none" id="mars-31" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-31" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(32)" class="" id="field-32">
+                        <img class="planet d-none" id="mars-32" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-32" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(33)" class="" id="field-33">
+                        <img class="planet d-none" id="mars-33" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-33" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(34)" class="" id="field-34">
+                        <img class="planet d-none" id="mars-34" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-34" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td onclick="showPick(35)" class="" id="field-35">
+                        <img class="planet d-none" id="mars-35" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-35" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(36)" class="" id="field-36">
+                        <img class="planet d-none" id="mars-36" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-36" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(37)" class="" id="field-37">
+                        <img class="planet d-none" id="mars-37" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-37" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(38)" class="" id="field-38">
+                        <img class="planet d-none" id="mars-38" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-38" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(39)" class="" id="field-39">
+                        <img class="planet d-none" id="mars-39" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-39" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(40)" class="" id="field-40">
+                        <img class="planet d-none" id="mars-40" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-40" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(41)" class="" id="field-41">
+                        <img class="planet d-none" id="mars-41" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-41" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td onclick="showPick(42)" class="" id="field-42">
+                        <img class="planet d-none" id="mars-42" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-42" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(43)" class="" id="field-43">
+                        <img class="planet d-none" id="mars-43" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-43" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(44)" class="" id="field-44">
+                        <img class="planet d-none" id="mars-44" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-44" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(45)" class="" id="field-45">
+                        <img class="planet d-none" id="mars-45" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-45" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(46)" class="" id="field-46">
+                        <img class="planet d-none" id="mars-46" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-46" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(47)" class="" id="field-47">
+                        <img class="planet d-none" id="mars-47" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-47" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                    <td></td>
+                    <td onclick="showPick(48)" class="" id="field-48">
+                        <img class="planet d-none" id="mars-48" src="./img/Mars.png" alt="" width="82px" height="82px">
+                        <img class="planet d-none" id="moon-48" src="./img/Moon.png" alt="" width="82px" height="82px">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
